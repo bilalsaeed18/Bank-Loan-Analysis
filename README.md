@@ -1,2 +1,2 @@
 # Bank-Loan-Analysis
-Bank load analysis
+Bank loan analysis
