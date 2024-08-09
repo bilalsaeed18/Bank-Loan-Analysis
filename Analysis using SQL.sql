@@ -52,4 +52,35 @@ SELECT AVG(int_rate)*100 AS PMTD_Avg_Int_Rate FROM [dbo].[financial_loan_data]
 WHERE MONTH(issue_date) = 11
 
 
+--Avg DTI
+SELECT AVG(dti)*100 AS Avg_DTI FROM [dbo].[financial_loan_data]
+
+--MTD Avg DTI
+SELECT AVG(dti)*100 AS MTD_Avg_DTI FROM [dbo].[financial_loan_data]
+WHERE MONTH(issue_date) = 12
+
+--PMTD Avg DTI
+SELECT AVG(dti)*100 AS PMTD_Avg_DTI FROM [dbo].[financial_loan_data]
+WHERE MONTH(issue_date) = 11
+
+
+-------------GOOD LOAN ISSUED-------------------------
+--Good Loan Percentage
+SELECT
+    (COUNT(CASE WHEN loan_status = 'Fully Paid' OR loan_status = 'Current' THEN id END) * 100.0) / 
+	COUNT(id) AS Good_Loan_Percentage
+FROM [dbo].[financial_loan_data]
+
+--Good Loan Applications
+SELECT COUNT(id) AS Good_Loan_Applications FROM [dbo].[financial_loan_data]
+WHERE loan_status = 'Fully Paid' OR loan_status = 'Current'
+
+--Good Loan Funded Amount
+SELECT SUM(loan_amount) AS Good_Loan_Funded_amount FROM [dbo].[financial_loan_data]
+WHERE loan_status = 'Fully Paid' OR loan_status = 'Current'
+
+
+--Good Loan Amount Received
+SELECT SUM(total_payment) AS Good_Loan_amount_received FROM [dbo].[financial_loan_data]
+WHERE loan_status = 'Fully Paid' OR loan_status = 'Current'
 
