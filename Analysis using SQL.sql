@@ -28,3 +28,15 @@ WHERE MONTH(issue_date) = 12
 SELECT SUM(loan_amount) AS Total_Funded_Amount FROM [dbo].[financial_loan_data]
 WHERE MONTH(issue_date) = 11
 
+--Total Amount Received
+SELECT SUM(total_payment) AS Total_Amount_Collected FROM [dbo].[financial_loan_data]
+
+
+--MTD Total Amount Received
+SELECT SUM(total_payment) AS Total_Amount_Collected FROM [dbo].[financial_loan_data]
+WHERE MONTH(issue_date) = 12
+
+--PMTD Total Amount Received
+SELECT SUM(total_payment) AS Total_Amount_Collected FROM [dbo].[financial_loan_data]
+
+
