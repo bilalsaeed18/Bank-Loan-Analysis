@@ -40,3 +40,16 @@ WHERE MONTH(issue_date) = 12
 SELECT SUM(total_payment) AS Total_Amount_Collected FROM [dbo].[financial_loan_data]
 
 
+--Average Interest Rate
+SELECT AVG(int_rate)*100 AS Avg_Int_Rate FROM [dbo].[financial_loan_data]
+
+--MTD Average Interest
+SELECT AVG(int_rate)*100 AS MTD_Avg_Int_Rate FROM [dbo].[financial_loan_data]
+WHERE MONTH(issue_date) = 12
+
+--PMTD Average Interest
+SELECT AVG(int_rate)*100 AS PMTD_Avg_Int_Rate FROM [dbo].[financial_loan_data]
+WHERE MONTH(issue_date) = 11
+
+
+
