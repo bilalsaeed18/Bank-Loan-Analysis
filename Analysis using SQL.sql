@@ -120,3 +120,23 @@ WHERE loan_status = 'Charged Off'
         loan_status
 
 
+		SELECT 
+	loan_status, 
+	SUM(total_payment) AS MTD_Total_Amount_Received, 
+	SUM(loan_amount) AS MTD_Total_Funded_Amount 
+FROM [dbo].[financial_loan_data]
+WHERE MONTH(issue_date) = 12 
+GROUP BY loan_status
+
+
+
+--------------------BANK LOAN REPORT | OVERVIEW-----------------------
+SELECT 
+	MONTH(issue_date) AS Month_Munber, 
+	DATENAME(MONTH, issue_date) AS Month_name, 
+	COUNT(id) AS Total_Loan_Applications,
+	SUM(loan_amount) AS Total_Funded_Amount,
+	SUM(total_payment) AS Total_Amount_Received
+FROM [dbo].[financial_loan_data]
+GROUP BY MONTH(issue_date), DATENAME(MONTH, issue_date)
+ORDER BY MONTH(issue_date)
