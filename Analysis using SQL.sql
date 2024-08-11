@@ -104,3 +104,19 @@ WHERE loan_status = 'Charged Off'
 SELECT SUM(total_payment) AS Bad_Loan_amount_received FROM [dbo].[financial_loan_data]
 WHERE loan_status = 'Charged Off'
 
+
+
+----LOAN STATUS
+	SELECT
+        loan_status,
+        COUNT(id) AS LoanCount,
+        SUM(total_payment) AS Total_Amount_Received,
+        SUM(loan_amount) AS Total_Funded_Amount,
+        AVG(int_rate * 100) AS Interest_Rate,
+        AVG(dti * 100) AS DTI
+    FROM
+        [dbo].[financial_loan_data]
+    GROUP BY
+        loan_status
+
+
