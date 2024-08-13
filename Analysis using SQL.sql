@@ -189,3 +189,26 @@ GROUP BY purpose
 ORDER BY purpose
 
 
+---------HOME OWNERSHIP-----------------
+SELECT 
+	home_ownership AS Home_Ownership, 
+	COUNT(id) AS Total_Loan_Applications,
+	SUM(loan_amount) AS Total_Funded_Amount,
+	SUM(total_payment) AS Total_Amount_Received
+FROM [dbo].[financial_loan_data]
+GROUP BY home_ownership
+ORDER BY home_ownership
+
+
+
+SELECT 
+	purpose AS PURPOSE, 
+	COUNT(id) AS Total_Loan_Applications,
+	SUM(loan_amount) AS Total_Funded_Amount,
+	SUM(total_payment) AS Total_Amount_Received
+FROM [dbo].[financial_loan_data]
+WHERE grade = 'A'
+GROUP BY purpose
+ORDER BY purpose
+
+
